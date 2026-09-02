@@ -1,0 +1,17 @@
+# Eclipse workspace
+**/.metadata/
+**/Servers/
+
+# Eclipse project settings
+**/.settings/
+**/.classpath
+**/.project
+
+# Java build output
+**/build/
+**/bin/
+**/target/
+
+# Windows
+Thumbs.db
+Desktop.ini
