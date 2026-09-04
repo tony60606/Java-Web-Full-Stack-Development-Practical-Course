@@ -1,0 +1,18 @@
+# Eclipse
+.metadata/
+.settings/
+
+# Java build
+build/
+bin/
+target/
+
+# 編譯檔
+*.class
+
+# 作業系統檔案
+.DS_Store
+Thumbs.db
+
+# IDE 暫存
+*.log
