@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<script type="text/javascript">
+	
+	window.onload = (event) => {
+		document.getElementById("message").innerHTML = "JAVAScript 好好玩!!" ;
+	}
+	
+</script>
+
+</head>
+<body>
+
+	<h1>第一個JAVA Script程式</h1>
+	
+	<script type="text/javascript">
+		//單行註解
+		/*
+			多行註解
+			在網頁中用<h3>標題顯示一則訊息
+		*/
+		document.write("<h3>Hello World! JAVA Script</h3>")
+	</script>
+	<hr>
+	<!-- alert(彈出視窗) -->
+	
+	<button type = "button" onclick="alert(Date())" >按我</button>
+	
+	<hr>
+	
+	<div id = "message">準備顯示訊息</div>
+	
+	<hr>
+	
+	<!-- 外部JAVA Script -->
+	<h2>執行外部JAVA Script程式</h2>
+	<script src = "js/myjs01.js"> </script>
+	
+</body>
+</html>
