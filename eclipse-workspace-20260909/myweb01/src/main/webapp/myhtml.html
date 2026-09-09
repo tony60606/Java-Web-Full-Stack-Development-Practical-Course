@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>html 5 語意標籤</title>
+<style type = "text/css">
+/*=======內部樣式表(只有這個HTML使用)======*/
+body {
+	font-family : system-ui , sans-serif ;
+	/* 字型：system-ui(系統字體), sans-serif(無襯線體->讓文字更清晰) */
+	line-height : 1.6 ;
+	/* 行高 */
+	background-color : #e699cc ;
+	margin : 0 ;
+	/* 間距重設：移除瀏覽器預設的邊距，避免網頁四周出現白邊  */
+	
+}
+
+header,footer {
+	background-color : #66ffff ;
+	text-align : center ;
+}
+
+header,nav,main,footer {
+	padding : 16px ;
+}
+
+nav{
+	background-color : #8000ff ;
+	font-size : 16 ;
+	display : flex ;/*讓連結橫向排列*/
+	gap : 10px ;/*間距*/
+	justify-content : center;
+}
+
+nav a {
+	text-decoration: none ;
+	padding : 10px 20px;
+	background-color : #ffffff ; 
+	border : 5px solid #9999ff;
+	border-radius: 2px ;
+	color : #d9b3ff ;
+	
+}
+
+/* 佈局核心 */
+/* 語義化佈局 (.semantic-layout)這裡示範了如何製作「左主內容、右側邊欄」：
+		flex: 3 vs flex: 1：這代表比例分配。主內容會佔掉 75% 的寬度，側邊欄佔 25%。*/
+.semantic-Layout {
+	display : flex ;
+	gap : 20px ;
+	width : min(1000px,95%) ;
+	margin : 20px auto;
+
+}
+
+.semantic-content {
+	flex : 3 ;
+}
+
+.semantic-aside {
+	flex : 1 ;
+}
+
+section {
+	padding : 20px ;
+	background-color : #ffffff ;
+	margin-bottom: 20px ;
+	border-radius: 8px ;
+	box-shadow: 0 0 6px rgba(0,0,0,0.8) ;
+	/*
+	1. 前兩個 0：水平與垂直偏移 (Offset-x, Offset-y)
+		     第一個 0 (水平)：陰影向右（正值）或向左（負值）移動的距離。設定為 0 表示陰影在元素正後方，不會向左右偏。
+             第二個 0 (垂直)：陰影向下（正值）或向上（負值）移動的距離。設定為 0 表示陰影在元素正後方，不會向上下偏。
+             組合效果：當兩者皆為 0，陰影會像「光環」一樣均勻地從元素四周散發出來。
+    2. 6px：模糊半徑 (Blur-radius)
+             這決定了陰影邊緣的「清晰度」。
+             數值越小：陰影越銳利、越像實心的線條。
+             數值越大：陰影越擴散、越柔和。
+             本例效果：6px 是一個非常輕微的模糊，能營造出物體微浮於表面的感覺。
+    3. rgba(0, 0, 0, 0.08)：顏色與透明度 (Color & Alpha)
+           這使用的是 RGBA 色彩模式：
+           0, 0, 0：代表純黑色（Black）。
+           0.08：代表透明度為 8%。
+           關鍵細節：在現代 UI 設計中，我們很少使用純黑色的重陰影。使用極低透明度（如 8% 或 10%）的黑色，
+     	   可以產生一種「若有似無」的高級質感，讓使用者感覺頁面很乾淨，但又有空間深度。
+	*/
+}
+
+article{
+	padding : 20px ;
+	background-color : #cce6ff ;
+	margin-bottom: 20px ;
+	border-radius: 8px ;
+	box-shadow: 0 0 6px rgba(100,150,255,0.8) ;
+}
+
+table,th,td {
+	border : 2px solid #999999;
+}
+th,td {
+	padding : 10px ;
+}
+
+table {
+	border-collapse: collapse;
+	width : 100% ;
+	margin-top: 15px ;
+}
+
+</style>
+
+<link rel = "stylesheet" href = "css/style.css" type = "text/css">
+</head>
+<body>
+<!-- <header> 頁首 -->
+	<header>
+		<h1>HTML 5 網頁開發</h1>
+		<p style = "color : #0066CC"> HTML 5 語意化，就是掌握SEO的關鍵 </p>
+	</header>
+	<!-- 導覽列 -->
+	<nav>
+		<a href="#typography">文字排版與清單</a> 
+		<a href="#imageslink">圖片與超連結</a> 
+		<a href="#memberlist">學員名單</a> 
+		<a href="#contact">聯絡我們</a> 
+		<a href="#memberregistration">會員註冊</a>
+		<a href="#flex">Flex 版面設計</a>
+		<a href="#grid">Grid 商品展示</a>   
+	</nav>
+	
+	<!-- 主要內容 -->
+	<main class = "semantic-Layout">
+		<!-- 包含多區塊 -->
+		<div class = "semantic-content">
+			<!-- 章節區塊 -->
+			<section>
+				<h2>為什麼要學習語意化?</h2>
+				<p>
+					學習 Semantic HTML ,能讓網頁結構更清楚，例如搜尋引擎優先爬取網頁內資料
+				</p>
+			</section>
+			<!-- <atricle> 文章/獨立內容 -->
+			<article id = "typography">
+				<h2>文字排版與清單</h2>
+				<h1>主標題(H1)</h1>
+				<h2>章節標題(H2)</h2>
+				<h3>小節標題(H3)</h3>
+				<p>這是一段普通的文字內容</p>
+				<!-- <strong>重要文字 -->
+				<p>本次 <strong>JAVA OCP 認證考試</strong>，請在期限內完成報名</p>
+				
+				
+				<!-- <em>強調文字 -->
+				<p>請特別<em><b>留意</b></em>報名截止日期</p>
+				
+				<!-- <mark>高亮度文字 -->
+				<p>截止日期為<mark>2026/09/04</mark>，請在截止日期前完成報名</p>
+				<!-- <hr> 水平線 -->
+				
+				<hr>
+				
+				<h3>項目清單</h3>
+				
+				<!-- <ul> 項目符號  -->
+				<!-- <ul>變更符號需使用CSS的list-style-type -->
+				
+				<ul>
+					<li>JAVA 程式設計</li>
+					<li>Python AI開發課程</li>
+					<li>SQL 資料庫管理</li>
+				</ul>
+				
+				<!-- <ol>項目符號 -->
+				<!-- <ol> 項目編號  可以使用 type 屬性變更 1:(預設)、A、a、I、i，start 指定開始數字 -->
+				
+				<ol type = "A" start = 4 >
+					<li>JAVA 程式設計</li>
+					<li>Python AI開發課程</li>
+					<li>SQL 資料庫管理</li>
+				</ol>
+			</article>
+			
+			<!-- 圖片、超連結 -->
+			<article id = "imageslink">
+				<h2>圖片與超連結</h2>
+				<div>
+				<!-- 圖片 <img> 必須有 alt，這是無障礙與 SEO 的基本要求 -->
+					<img src="image/logo.png" alt="Google Logo">
+				</div>
+				<p>
+					<a href = "https://www.google.com">前往Google網站</a> 
+				</p>
+				<p>
+					<a href = "https://www.google.com" target = "_blank">前往Google網站(新分頁)</a> 
+				</p>
+			</article>
+			
+			<!-- 基本表格 -->
+			<article id = "memberlist">
+				<h2>學員名單(表格)</h2>
+				<table>
+					<tr>
+						<th>姓名</th>
+						<th>電話</th>
+						<th>Eamil</th>
+					</tr>
+					<tr>
+						<td>王大美</td>
+						<td>0912-345-678</td>
+						<td>alice@example.com</td>
+					</tr>
+					<tr>
+						<td>陳曉明</td>
+						<td>0987-654-321</td>
+						<td>david@example.com</td>
+					</tr>
+				</table>
+			</article>
+			
+			<!-- 基本表單 -->
+			<article id = "contact">
+				<h2>聯絡我們(基本表單)</h2>
+				<form>
+					<p> <labal> 姓名： <input type = "text"> </labal>
+					</p>
+					<p> <labal> Email： <input type = "email"> </labal>
+					</p>
+					<p> <labal> 年齡： <input type = "number"> </labal>
+					</p>
+					<p> <label> 預約日期 ：<input type = "date"> </label>
+					</p>
+					<p><button>送出</button></p>
+				</form>
+			</article>
+			
+			<!-- 驗證表單 -->
+			<article id = "memberregistration">
+				<h2>會員註冊</h2>
+				<form>
+					<p> <label>會員名稱 ：<input type = text required maxlength= "6"></label>
+					</p>
+					<p> <label>密碼(最少8位數) ：<input type = "password" required minlength = "8" ></label>
+					</p>
+					<p> <label>Email ： <input type = "email" required> </label>
+					</p>
+					<p> <labal>年齡： <input type = "number" required min = "12" max = "100"> </labal>
+					</p>
+					<p> <label>手機： <input type = "tel" required pattern="^09[0-9]{8}$"></label>
+					</p>
+					<p> <button>送出</button>
+					</p>
+				</form>
+			</article>
+			
+			<!-- Flex版面 -->
+			<article id = "flex">
+				<h2>Flex 版面製作</h2>
+				<p>以下三個區塊會自動平均分配寬度</p>
+				<div class = "flex-demo">
+					<div class = "flex-box">區塊一</div>
+					<div class = "flex-box">區塊二</div>
+					<div class = "flex-box">區塊三</div>
+				</div>
+			</article>
+			
+			<!-- Grid -->
+			<article id ="grid">
+				<h2>商品展示</h2>
+				<div class = "grid-demo">
+					<div class = "grid-box">
+						<h3>壓克力鑰匙圈</h3>
+						<p>售價：500</p>
+					</div>
+					<div class = "grid-box">
+						<h3>鋼鐵鑰匙圈</h3>
+						<p>售價：750</p>
+					</div>
+					<div class = "grid-box">
+						<h3>壓克力立牌(大)</h3>
+						<p>售價：1200</p>
+					</div>
+					<div class = "grid-box">
+						<h3>壓克力立牌(中)</h3>
+						<p>售價：700</p>
+					</div>
+					<div class = "grid-box">
+						<h3>壓克力立牌(小)</h3>
+						<p>售價：550</p>
+					</div>
+					<div class = "grid-box">
+						<h3>針織品吊飾</h3>
+						<p>售價：150</p>
+					</div>
+				</div>
+			</article>	
+			
+			
+		</div>
+		<!-- 側邊欄 -->
+		<aside class = "semantic-aside">
+			<h3>JAVA OCP 證照</h3>
+			<p>JAVA 11 1Z0-819</p>
+			<div>
+				<img alt="OCP" src = "image/logo2.png">
+			</div>
+			<hr>
+			<h3>熱門課程</h3>
+			<ul>
+				<li>JAVA WEB開發雲端課程</li>
+				<li>Spring Boot企業培訓班</li>
+			</ul>
+		</aside>
+	</main>
+	
+	<!-- <footer> 頁尾 -->
+	<footer>
+		<p>&copy; 2026 JAVA Web 全端網頁開發實務研究室</p>
+	</footer>
+</body>
+</html>
