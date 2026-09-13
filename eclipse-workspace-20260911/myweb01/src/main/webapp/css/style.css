@@ -1,0 +1,33 @@
+@charset "UTF-8";
+
+/* Flex版面 */
+
+.flex-demo {
+	display : flex ;
+	gap : 20px ;
+	margin-top : 16px ;
+}
+
+.flex-box {
+	flex : 1 ; 
+	padding : 16px ;
+	background-color: #ccfff5 ;
+	border : 1px solid #ccffcc ;
+	border-radius: 6px ;
+}
+
+/* 二維版面設計 */
+
+.grid-demo {
+	display : grid ;
+	grid-template-columns : repeat(auto-fit , minmax(220px , 1fr)) ;	
+	gap : 16px ;
+	margin-top: 16px ;
+}
+
+.grid-box {
+	padding : 16px ;
+	background-color: #ccfff5 ;
+	border : 1px solid #ccffcc ;
+	border-radius: 6px ;
+}
