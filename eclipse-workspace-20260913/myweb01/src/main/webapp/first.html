@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>第一個分頁</title>
+<style type = "text/css">
+	body {
+		font-family : system-ui , sans-serif ;
+		line-height : 1.6 ;
+		margin : 0 ;
+		background-color : #ecf9ec ; 
+	}
+	
+	header , footer {
+		text-align : center ;
+		background-color : #b3fff0 ; 
+	}
+	
+	header , footer , nav , main {
+		padding : 16px ;
+	}
+	
+	nav {
+		display : flex ;
+		gap : 10px ;
+		justify-content : center ;
+	}
+	
+	nav a {
+		text-decoration : none ;
+		padding : 10px 20px ;
+		border : 5px solid ; 
+		border-radius : 2px ;
+		color : #0055ff ; 
+	}
+	
+	.semantic-layout {
+		display : flex ;
+		gap : 20px ;
+		width : min(1200px,95%) ;
+		margin : 20px auto ;
+	}
+
+	.semantic-content {
+		flex : 2 ;
+	}
+	
+	.semantic-aside {
+		flex : 1 ;
+		border : 1px solid #e6e6ff;
+		border-radius : 2px ;
+	}
+	
+	section {
+		padding : 20px ;
+		background-color : #f0f5f5 ;
+		margin-bottom : 20px ;
+		border-radius : 8px ;
+		box-shadow : 0 0  8px rgba(0,0,0,0.8) ;   
+	}
+	
+	article {
+		padding : 20px ;
+		background-color : #f0f5f5 ;
+		margin-bottom : 20px ;
+		border-radius : 8px ;
+		box-shadow : 0 0  8px rgba(0,0,0,0.8) ;
+	}
+	
+	table , th , td {
+		border : 2px solid #999999;
+	}
+	
+	th , td {
+		padding : 10px ;
+		text-align : center ; 
+	}
+	
+	table {
+		border-collapse : collapse ;
+		width : 100% ;
+		margin-top : 15px ;   
+	}
+
+</style>
+
+<link rel = "stylesheet" href = "css/style.css" type = "text/css">
+
+</head>
+<body>
+
+	<header>
+		<h1>台灣神明</h1>
+		<p style = "color : #ff4d88 ; font-size : 15px">官方統計，2023年底台灣共有12,316 座登記有案寺廟</p>
+	</header>
+	
+	<nav>
+		<a href = #A>文字排版與清單</a>
+		<a href = #B>圖片與超連結</a>
+		<a href = #C>神明簡介</a>
+		<a href = #D>聯絡我們</a>
+		<a href = #E>神明建醮登記</a>
+		<a href = #F>活動照片花絮</a>
+		<a href = #G>商品展示</a>
+	</nav>
+	
+	<main class = "semantic-layout">
+		<div class = "semantic-content">
+			<section>
+				<h2>台灣廟宇信仰介紹</h2>
+				<p>
+					台灣的廟宇信仰主要受到道教、佛教與民間信仰影響，也融合祖先崇拜、地方守護神及不同移民族群的信仰文化。許多廟宇並非只供奉單一神明，而是以一位神明為主神，同時配祀其他神祇。
+				</p>
+			</section>
+			
+			<article id = "A">
+				<h1>主標題</h1>
+				<h2>章節標題</h2>
+				<h3>小節標題</h3>
+				
+				<h2>第一章：文字排版與清單-廟宇規則介紹</h2>
+				
+				<p>廟宇內最中間的神明為<strong>該廟主神</strong></p>
+				<p>一般廟宇參拜：<em>天公爐三炷香</em><b>、</b><em>主爐三炷香</em><b>、</b><em>其餘爐一炷香</em></p>
+				<p>出入廟宇規則：<mark>左廟門進，右廟門出</mark></p>
+				
+				<hr>
+				
+				<h3>常見神明</h3>
+				<ul>
+					<li>天上聖母</li>
+					<li>關聖帝君</li>
+					<li>玄天上帝</li>
+				</ul>
+				
+				<h3>常見陪祀神明</h3>
+				<ol type = "a" start = 10>
+					<li>觀音佛祖</li>
+					<li>註生娘娘</li>
+					<li>福德正神</li>
+				</ol>
+			</article>
+			
+			<article id = "B">
+				<h2>第二章：圖片與超連結</h2>
+				<div>
+					<img src = "image/images2.jpg" alt = "嘉義城隍廟神將" style="width: 200px; height: 200px; object-fit: cover">
+				</div>
+				
+				<p><a href = "https://www.google.com/">Google</a></p>
+				<p><a href = "https://www.youtube.com/" target="_blank">Youtube</a></p>
+				
+			</article>
+			
+			<article id = "C">
+				<h2>第三章：基本表格-神明簡介</h2>
+				<table>
+					<tr>
+						<th>神明名稱</th>
+						<th>聖誕日期(農曆)</th>
+						<th>神明照片</th>
+					</tr>
+					<tr>
+						<td>玉皇上帝</td>
+						<td>正月初九</td>
+						<td><img src = "image/玉皇上帝.jpg" alt = "玉皇上帝" style="width: 200px; height: 200px; object-fit: cover"></td>
+					</tr>
+					<tr>
+						<td>玄天上帝</td>
+						<td>三月初三</td>
+						<td><img src = "image/玄天上帝.jpg" alt = "玄天上帝" style="width: 200px; height: 200px; object-fit: cover"></td>
+					</tr>  
+					<tr>
+						<td>天上聖母</td>
+						<td>三月二十三</td>
+						<td><img src = "image/天上聖母.jpg" alt = "天上聖母" style="width: 200px; height: 200px; object-fit: cover"></td>
+					</tr>   
+				</table>
+			
+			</article>
+			
+			<article id = "D">
+				<h2>第四章：基本表單-聯絡我們</h2>
+				<form>
+					<p>
+						<label>
+							姓名：<input type = "text"> 先生/小姐
+						</label>
+					</p>
+					<p>
+						<label>
+							手機號碼：<input type = "tel">
+						</label>
+					</p>
+					<p>
+						<label>
+							Email：<input type = "email">
+						</label>
+					</p>
+					<p>
+						<label>
+							意見回饋：<input type = "text"  style="width: 300px">
+						</label>
+					</p>
+					<button>送出</button>
+				</form>
+			</article>
+			
+			<article id = "E">
+				<h2>第五章：驗證表單-神明建醮登記</h2>
+				<form>
+					<p>
+						<label>
+							聯絡人姓名：<input type = "text" required maxlength = "6">  先生/小姐
+						</label>
+					</p>
+					<p>
+						<label>
+							聯絡人電話：<input type = "tel" required pattern = "^09[0-9]{8}$"> 
+						</label>
+					</p>
+					<p>
+						<label>
+							建醮神尊名稱：<input type = "text" required pattern="[\u4E00-\u9FFF]+">
+						</label>
+					</p>
+					<p>
+						<label>
+							建醮神尊尺寸：<input type = "number" required min = "0" max = "9"> 尺 <input type = "number" required min = "0" max = "9"> 寸
+						</label>
+					</p>
+					<p>
+						<label>
+							預計前來日期：<input type = "date" required>
+						</label>
+					</p>
+					<p>
+						<label>
+							預計請回日期：<input type = "date" required>
+						</label>
+					</p>
+					<button>送出</button>
+				</form>
+			</article>
+			
+			<article id = "F">
+				<h2>第六章：flex版面設計-活動照片花絮</h2>
+				<div class = "flex-demo">
+					<div class = "flex-box"><img src = "image/2787853_0.jpg" alt = "活動" style="width: 200px; height: 200px; object-fit: cover"></div>
+					<div class = "flex-box"><img src = "image/2787854_0.jpg" alt = "活動" style="width: 200px; height: 200px; object-fit: cover"></div>
+					<div class = "flex-box"><img src = "image/2787855.jpg" alt = "活動" style="width: 200px; height: 200px; object-fit: cover"></div>
+				</div>	
+			</article>
+			
+			<article id = "G">
+				<h2>第七章：grid版面設計-商品展示</h2>
+				<div class = "grid-demo">
+					<div class = "grid-box">
+						<h3>玉皇上帝Q版公仔</h3>
+						<p>售價：700</p>
+					</div>
+					<div class = "grid-box">
+						<h3>天上聖母Q版公仔</h3>
+						<p>售價：700</p>
+					</div>
+					<div class = "grid-box">
+						<h3>玄天上帝Q版公仔</h3>
+						<p>售價：700</p>
+					</div>
+					<div class = "grid-box">
+						<h3>月下老人幸福御守盲盒</h3>
+						<p>售價：350</p>
+					</div>
+					<div class = "grid-box">
+						<h3>月下老人幸福御守盲盒(一中盒6入)</h3>
+						<p>售價：1700</p>
+					</div>
+					<div class = "grid-box">
+						<h3>30週年天上聖母造型威士忌酒瓶</h3>
+						<p>售價：2000</p>
+					</div>
+					<div class = "grid-box">
+						<h3>天上聖母壓克力吊飾</h3>
+						<p>售價：150</p>
+					</div>
+					<div class = "grid-box">
+						<h3>天上聖母壓克力立牌</h3>
+						<p>售價：200</p>
+					</div>
+					<div class = "grid-box">
+						<h3>Q版五寶壓克力吊飾盲袋</h3>
+						<p>售價：150</p>
+					</div>
+				</div>
+			</article>
+			
+		</div>
+		
+		<aside class = "semantic-aside">
+			<h1>活動專欄</h1>
+			<h2>鬼門關-2026年農曆7月30日是國曆的9月10日</h2>
+			
+			<h3>已結束活動</h3>
+			<p>台南縣城隍廟 七爺八爺夜巡</p>
+			<p>嘉義城隍夜巡諸羅城</p>
+			
+			<div>
+				<img src = "image/images.jpg" alt = "嘉義城隍廟神將" style="width: 200px; height: 200px; object-fit: cover">
+				<p style = "font-size : 15px">圖片出處：https://www.facebook.com/</p>
+			</div>
+			
+			<h3>即將開始活動列表</h3>
+			<ul>
+				<li>全台開基騎馬中壇元帥總廟中營慶福宮入火安座暨祈安謝土遶境大典</li>
+				<hr>
+				<li>台南北區下土地總祿境恭送龍虎山廣信府張府天師回鑾遶境</li>
+				<hr>
+				<li>台南新市建安宮恭送廣信府張府天師回鑾</li>
+			</ul>
+			
+			
+		</aside>
+		
+		
+	</main>
+	
+	<footer>
+		<p>
+			&copy; 台南甲辰年府城迎媽祖 鎮南媽 踅府城
+		</p>
+	</footer>
+
+</body>
+</html>
