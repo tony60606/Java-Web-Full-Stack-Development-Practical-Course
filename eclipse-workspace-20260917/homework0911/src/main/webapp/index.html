@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>鄭仕遠的個人介紹小卡</title>
+
+<link rel = "stylesheet" href = "css/style.css" type = "text/css">
+
+</head>
+<body>
+	
+	<header>
+		<h1>鄭仕遠的個人介紹小卡</h1>
+		<p style = "color : #7c5cc4 ; font-size : 25px"><b>~~歡迎來到我的網站~~</b></p>
+	</header>
+	
+	<section class = "run">
+				<p style = "font-size : 25px">想要更了解我嗎~接下來將對我本人逐一介紹</p>
+	</section>
+	
+	<nav>
+		<a href = #information> 基本資料 </a>
+		<a href = #education> 學歷專區 </a>
+		<a href = #skills> 個人專長 </a>
+		<a href = #zodiac> 星座專區 </a>
+		<a href = #sport> 興趣專區<br>運動 </a>
+		<a href = #music> 興趣專區-聽音樂<br>(好歌推薦) </a>
+		<a href = #photography> 興趣專區<br>走廟拍照 </a>
+	</nav>
+	
+	
+	<main class = "semantic-Layout">
+		<div class = "semantic-content">
+			<article id = "information">
+				<h2>基本資料</h2>
+				<div id = "photo">
+					<ul>
+						<li >姓名：鄭仕遠</li>
+						<li>出生地：台南市</li>
+						<li>生日：1996/04/17</li>
+						<li>
+							<mark>農曆生日：1996/02/30</mark>
+							<br>
+							<button onclick = "birth()">點我</button>
+							<span id = "showbirth"></span>
+						</li>
+						<li>星座：牡羊座</li>
+					</ul>
+					<img src = "image/大頭貼.jpg" alt = "大頭貼" style="width: 200px; height: 300px; object-fit: cover">
+				</div>
+				<button onclick = "getBMI()">點擊我顯示更多資料</button>
+				<fieldset>
+				<div id = "showBMI"></div>
+				</fieldset>
+				<br>
+				<button onclick = "gotop()">點我回到置頂</button>
+			</article>
+			
+			<article id = "education">
+				<h2>學歷專區</h2>
+				<table>
+					<tr>
+						<th>學校名稱</th>
+						<th>科系名稱</th>
+					</tr>
+					<tr>
+						<td>臺南市東區大同國民小學</td>
+						<td>-略-</td>
+					</tr>
+					<tr>
+						<td>臺南市立忠孝國民中學</td>
+						<td>-略-</td>
+					</tr>
+					<tr>
+						<td>臺南市東區私立長榮高級中學附設高職部</td>
+						<td>資料處理科</td>
+					</tr>
+					<tr>
+						<td>南臺科技大學</td>
+						<td>會計資訊系</td>
+					</tr>
+				</table>
+				<br>
+				<button onclick = "gotop()">點我回到置頂</button>
+			</article>
+		
+			<article id = "skills">
+				<h2>個人專長</h2>
+				<table>
+					<tr>
+						<th>類別名稱</th>
+						<th>工具(系統)</th>
+					</tr>
+					<tr>
+						<td>ERP 系統</td>
+						<td>鼎新 Workflow ERP、Smart ERP</td>
+					</tr>
+					<tr>
+						<td>程式語言</td>
+						<td>Java、Python、JavaScript</td>
+					</tr>
+					<tr>
+						<td>Web 技術</td>
+						<td>HTML、CSS、Servlet</td>
+					</tr>
+					<tr>
+						<td>資料庫／資料存取</td>
+						<td>SQL、JDBC</td>
+					</tr>
+					<tr>
+						<td>版本控制</td>
+						<td>Git、GitHub</td>
+					</tr>
+					<tr>
+						<td>AI 輔助工具</td>
+						<td>Gemini、ChatGPT<br>（程式學習、錯誤分析與除錯輔助）</td>
+					</tr>
+					<tr>
+						<td>辦公室應用</td>
+						<td>Word、Excel、PowerPoint</td>
+					</tr>
+				</table>
+				<br>
+				<button onclick = "gotop()">點我回到置頂</button>
+			</article>
+			
+			<article id = "zodiac">
+				<h2>星座專區</h2>
+				<div class = "flex-demo">
+					<div class = "flex-box">
+					<p>個性</p>
+						<ul>
+							<li>直接</li>
+							<li>積極</li>
+							<li>有行動力</li>
+						</ul>
+					</div>
+					<div class = "flex-box">
+					<p>優點</p>
+						<ul>
+							<li>勇於嘗試</li>
+							<li>做事乾脆</li>
+						</ul>
+					</div>
+					<div class = "flex-box">
+					<p>缺點</p>
+						<ul>
+							<li>比較性急</li>
+							<li>缺乏耐心</li>
+						</ul>
+					</div>
+				</div>
+				<br>
+				<button onclick = "gotop()">點我回到置頂</button>
+			</article>
+			
+			<article id = "sport">
+				<h2>興趣專區-運動</h2>
+				<h3><b>喜歡的運動有：保齡球、羽毛球</b></h3>
+				<div class = "sport-photo">
+					<img src = "image/保齡球.jpg" alt = "保齡球照片" style="width: 300px; height: 200px; object-fit: cover">
+					<img src = "image/羽毛球.png" alt = "羽毛球照片" style="width: 300px; height: 200px; object-fit: cover">
+				</div>
+				<br>
+				<button onclick = "gotop()">點我回到置頂</button>
+			</article>
+			
+			<article id = "music">
+				<h2>興趣專區-聽音樂(好歌推薦)</h2>
+				<table>
+					<tr>
+						<th>歌曲名稱</th>
+						<th>歌手名稱/團體名稱</th>
+						<th>音樂網址</th>
+					</tr>
+					<tr>
+						<td>小紫aka給我錢</td>
+						<td>芒果醬</td>
+						<td>
+							<h3><a href = "https://www.youtube.com/watch?v=gCa2L_mC3w8&list=RDgCa2L_mC3w8&start_radio=1" target = "_blank">點我前往Youtube</a></h3>
+						</td>
+					</tr>
+					<tr>
+						<td>一個吻的時間</td>
+						<td>冰球樂團、溫嵐</td>
+						<td>
+							<h3><a href = "https://www.youtube.com/watch?v=GtOlsobtbh4&list=RDGtOlsobtbh4&start_radio=1" target = "_blank">點我前往Youtube</a></h3>
+						</td>
+					</tr>
+					<tr>
+						<td>你朝我的方向走來</td>
+						<td>9m88、馬念先</td>
+						<td>
+							<h3><a href = "https://www.youtube.com/watch?v=7L06_HW_HcA&list=RD7L06_HW_HcA&start_radio=1" target = "_blank">點我前往Youtube</a></h3>
+						</td>
+					</tr>
+					<tr>
+						<td>淚海</td>
+						<td>許茹芸</td>
+						<td>
+							<h3><a href = "https://www.youtube.com/watch?v=3z979bp_orA&list=RD3z979bp_orA&start_radio=1" target = "_blank">點我前往Youtube</a></h3>
+						</td>
+					</tr>
+					<tr>
+						<td>你講的話</td>
+						<td>江蕙</td>
+						<td>
+							<h3><a href = "https://www.youtube.com/watch?v=16PEvBa_LXw&list=RD16PEvBa_LXw&start_radio=1" target = "_blank">點我前往Youtube</a></h3>
+						</td>
+					</tr>
+					<tr>
+						<td>秘密情人</td>
+						<td>孫淑媚</td>
+						<td>
+							<h3><a href = "https://www.youtube.com/watch?v=sPgWz8T27Sw&list=RDsPgWz8T27Sw&start_radio=1" target = "_blank">點我前往Youtube</a></h3>
+						</td>
+					</tr>
+					<tr>
+						<td>Never Enough</td>
+						<td>Loren Allred</td>
+						<td>
+							<h3><a href = "https://www.youtube.com/watch?v=uztIUUh5-WE&list=RDuztIUUh5-WE&start_radio=1" target = "_blank">點我前往Youtube</a></h3>
+						</td>
+					</tr>
+				</table>
+				<br>
+				<button onclick = "gotop()">點我回到置頂</button>
+			</article>
+			
+			<article id = "photography">
+				<h2>興趣專區-走廟拍照</h2>
+				<h3>喜歡廟宇文化以及神像攝影</h3>
+					<div class = "grid-demo">
+						<div class = "grid-box">
+							<p><img src="image/廟會照1.jpg" alt = "廟會照" style = "width: 200px; height: 200px; object-fit: cover"></p>
+							<h3><a href = "https://zh.wikipedia.org/zh-tw/%E5%AE%89%E5%B9%B3%E9%96%8B%E8%87%BA%E5%A4%A9%E5%90%8E%E5%AE%AE" target = "_blank">台南安平開台天后宮</a><br><br>天上聖母<br>開臺媽祖</h3>
+						</div>
+						<div class = "grid-box">
+							<p><img src="image/廟會照2.jpg" alt = "廟會照" style = "width: 200px; height: 200px; object-fit: cover"></p>
+							<h3><a href = "https://zh.wikipedia.org/zh-tw/%E5%A4%A7%E5%A4%A9%E5%90%8E%E5%AE%AE" target = "_blank">台南祀典大天后宮</a><br><br>天上聖母<br>(鎮南媽)</h3>
+						</div>
+						<div class = "grid-box">
+							<p><img src="image/廟會照3.jpg" alt = "廟會照" style = "width: 200px; height: 200px; object-fit: cover"></p>
+							<h3><a href = "https://onemorestep11.adan.tw/taiwan-tainan-chaoxinggong-wenlingtemple" target = "_blank">台南三郊營仔脚<br>朝興宮温陵廟</a><br><br>天上聖母<br>(温陵媽)</h3>
+						</div>
+						<div class = "grid-box">
+							<p><img src="image/廟會照4.jpg" alt = "廟會照" style = "width: 200px; height: 200px; object-fit: cover"></p>
+							<h3><a href = "https://zh.wikipedia.org/zh-tw/%E7%A4%81%E6%BA%AA%E5%8D%94%E5%A4%A9%E5%BB%9F" target = "_blank">勅建礁溪協天廟</a><br><br>關聖帝君</h3>
+						</div>
+						<div class = "grid-box">
+							<p><img src="image/廟會照5.jpg" alt = "廟會照" style = "width: 200px; height: 200px; object-fit: cover"></p>
+							<h3><a href = "https://zh.wikipedia.org/zh-tw/%E8%87%BA%E5%8D%97%E9%97%9C%E5%B8%9D%E6%AE%BF" target = "_blank">台南市後甲關帝殿</a><br><br>關聖帝君</h3>
+						</div>
+						<div class = "grid-box">
+							<p><img src="image/廟會照6.jpg" alt = "廟會照" style = "width: 200px; height: 200px; object-fit: cover"></p>
+							<h3><a href = "https://zh.wikipedia.org/zh-tw/%E5%85%88%E5%97%87%E5%AE%AE" target = "_blank">新北市三重先嗇宮</a><br><br>神農大帝</h3>
+						</div>
+					</div>
+					<br>
+					<button onclick = "gotop()">點我回到置頂</button>
+			</article>
+		</div>
+		
+		<aside class = "semantic-aside">
+			<h2>風景照分享</h2>
+			<hr>
+			<div class = "aside-a">
+				<h3>最想再出國去的地方-日本</h3>
+					<ul>
+						<li>
+							札幌諏訪神社<br>
+							<img src="image/風景照1.jpg" alt = "風景照" style = "width: 200px; height: 200px; object-fit: cover">
+						</li>
+						<li>
+							北海道虻田神社<br>
+							<img src="image/風景照2.jpg" alt = "風景照" style = "width: 200px; height: 200px; object-fit: cover">
+						</li>
+						<li>
+							難波八阪神社<br>
+							<img src="image/風景照3.jpg" alt = "風景照" style = "width: 200px; height: 200px; object-fit: cover">
+						</li>
+						<li>
+							宇治神社 (兔子神社)<br>
+							<img src="image/風景照4.jpg" alt = "風景照" style = "width: 200px; height: 200px; object-fit: cover">
+						</li>
+						<li>
+							京都東丸神社<br>
+							<img src="image/風景照5.jpg" alt = "風景照" style = "width: 200px; height: 200px; object-fit: cover">
+						</li>
+						<li>
+							北海道登別地獄谷<br>
+							<img src="image/風景照6.jpg" alt = "風景照" style = "width: 200px; height: 200px; object-fit: cover">
+						</li>
+					</ul>
+			</div>
+			<div class = "aside-b">
+				<h3>還沒去過的國家</h3>
+				<hr>
+				<ol type = "a" start = "1">
+					<li>韓國</li>
+					<li>新加坡</li>
+					<li>澳洲</li>
+					<li>歐洲</li>
+				</ol>
+			</div>
+		</aside>
+		
+	</main>
+	
+	
+	
+	<footer>
+		<p>&copy; 巨匠電腦 Java Web 全端開發實務班使用</p>
+	</footer>
+	
+	
+	<script src = "js/app.js"></script>
+</body>
+</html>
