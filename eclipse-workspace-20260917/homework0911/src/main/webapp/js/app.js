@@ -2,8 +2,17 @@
  * 
  */
 
+function introduce() {
+	
+	const introduce = document.getElementById("introduce") ;
+	introduce.textContent = "目前已學課程有：Java OCP JP程式設計師認證班、Python商業分析決策" ;
+}
+
+
 function birth() {
-	document.getElementById("showbirth").innerHTML = "很特別吧~4年才一次";
+	
+	const showbirth = document.getElementById("showbirth") ;
+	showbirth.textContent = "很特別吧~4年才一次";
 	
 }
 

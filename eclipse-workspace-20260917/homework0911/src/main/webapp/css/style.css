@@ -4,7 +4,9 @@ nav {
 	background-color : #e6fffa ;
 	font-size : 15px ;
 	display : flex ;
-	gap : 16px ;     
+	gap : 16px ; 
+	flex-wrap: wrap;
+	justify-content : center ;
 }
 
 nav a {
@@ -15,7 +17,6 @@ nav a {
 	border : 5px solid #9999ff;
 	border-radius: 2px ;
 	color : #d966ff ;
-	width: 220px;
     height: 70px;
 	box-sizing: border-box;
 	word-break: keep-all;
@@ -41,6 +42,7 @@ nav a {
     margin: 0;
     width: 100%;
     animation: move 10s linear infinite;
+    font-size : 25px
 }
 
 @keyframes move {
@@ -151,35 +153,65 @@ header,nav,main,footer {
 }
 
 #photo li {
-    font-size: 20px;
+    font-size: 18px;
+    margin-bottom: 15px;
 }
 
 .aside-a {
 	border: 2px solid #c4b5fd;
     border-radius: 8px;
     padding: 15px;
-    width: 300px;
 }
 
 .aside-b {
 	border: 2px solid #c4b5fd;
     border-radius: 8px;
     padding: 15px;
-    width: 300px;
     font-size : 20px ;
 }
 
 #showBMI {
-	font-size: 20px;
+	font-size: 18px;
 }
 
-.sport-photo {
+.sport-photo	 {
 	display: flex;
     justify-content: center;
     gap: 10px;
     width: 100%;
 }
 
-#photo li {
-    margin-bottom: 15px;
+
+#introduce {
+	font-size: 18px;
+	white-space: pre-line;
+}
+
+.sport-photo img {
+	width: 300px; 
+	height: 200px; 
+	object-fit: cover ;
+}
+
+.grid-box img {
+	width: 200px; 
+	height: 200px; 
+	object-fit: cover;
+}
+
+.aside-a img {
+	width: 200px;
+	height: 200px; 
+	object-fit: cover;
+}
+
+#photo img {
+	width: 200px; 
+	height: 300px; 
+	object-fit: cover;
+}
+
+header p {
+	color : #7c5cc4 ; 
+	font-size : 25px;
 }
