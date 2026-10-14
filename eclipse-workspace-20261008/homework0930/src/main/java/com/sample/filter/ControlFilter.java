@@ -41,9 +41,7 @@ public class ControlFilter extends HttpFilter implements Filter {
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
 		boolean isVaild = false ;
 		Cookie[] cookies = ((HttpServletRequest)request).getCookies() ;
-		if (cookies == null) {
-			((HttpServletResponse)response).sendRedirect("/homework0930/index.jsp") ;
-		} else {
+		if (cookies != null) {
 			for (Cookie cookie : cookies) {
 				if (cookie.getName().equals("cred")) {
 					isVaild = true ;
@@ -54,7 +52,7 @@ public class ControlFilter extends HttpFilter implements Filter {
 		if (isVaild) {
 			chain.doFilter(request, response);
 		} else {
-			((HttpServletResponse)response).sendRedirect("/homework0930/index.jsp") ;
+			((HttpServletResponse)response).sendRedirect(((HttpServletRequest)request).getContextPath() + "/index.jsp") ;
 		}
 	}
 

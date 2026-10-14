@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>       
+    
 <!DOCTYPE html>
 <html>
 <head>
@@ -53,6 +55,12 @@
     Update();
 </script>
 
+<c:if test="${param.success eq '1'}">
+    <script>
+        alert("刪除成功!!");
+        window.history.replaceState(null, "", window.location.pathname);
+    </script>
+</c:if>
 
 </body>
 </html>

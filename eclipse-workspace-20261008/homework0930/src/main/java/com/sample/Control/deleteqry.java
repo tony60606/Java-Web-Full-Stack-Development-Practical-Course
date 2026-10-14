@@ -82,7 +82,7 @@ public class deleteqry extends HttpServlet {
 	             return;
 			}
 			
-			response.sendRedirect(request.getContextPath() + "/td/To-do.jsp");
+			response.sendRedirect(request.getContextPath() + "/td/delete.jsp?success=1");
 			
 		} catch (NumberFormatException ex) {
 			 response.sendError(400, "索引格式錯誤");

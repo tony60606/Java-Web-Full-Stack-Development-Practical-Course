@@ -87,7 +87,7 @@ public class updateqry extends HttpServlet {
                 return;
 			}
 			
-			response.sendRedirect(request.getContextPath() + "/td/To-do.jsp");
+			response.sendRedirect(request.getContextPath() + "/td/update.jsp?success=1");
 			
 		} catch (NumberFormatException | DateTimeParseException ex) {
 			 response.sendError(400, "請選擇代辦事項並填寫日期");

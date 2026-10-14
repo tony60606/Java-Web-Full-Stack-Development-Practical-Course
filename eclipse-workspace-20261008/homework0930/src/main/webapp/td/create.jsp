@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix = "c" uri ="http://java.sun.com/jsp/jstl/core" %>    
+    
 <!DOCTYPE html>
 <html>
 <head>
@@ -34,6 +36,13 @@
 <p><a href ="To-do.jsp">回首頁</a></p>
 
 <script src="${pageContext.request.contextPath}/js/create.js"></script>
+
+<c:if test="${param.success eq '1'}">
+    <script>
+        alert("新增成功!!");
+        window.history.replaceState(null, "", window.location.pathname);
+    </script>
+</c:if>
 
 </body>
 </html>

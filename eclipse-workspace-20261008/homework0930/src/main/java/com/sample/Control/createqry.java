@@ -91,7 +91,7 @@ public class createqry extends HttpServlet {
 		
 		createDAO.add(dates, title, content,username);
 		
-		response.sendRedirect(request.getContextPath() + "/td/To-do.jsp") ;
+		response.sendRedirect(request.getContextPath() + "/td/create.jsp?success=1") ;
 	}
 
 }

@@ -16,7 +16,7 @@
 <div>登入帳號：</div>
 <input type = "text" name = "username" required/>
 <div>密碼：</div>
-<input type = "text" name = "password" required/>
+<input type = "password" name = "password" required/>
 <br><br>
 <div class = "btn">
 <button type="submit">登入</button><button type="reset">取消</button>
