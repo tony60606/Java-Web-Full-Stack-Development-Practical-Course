@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<taglib xmlns="http://java.sun.com/xml/ns/j2ee"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-jsptaglibrary_2_0.xsd"
+    version="2.0">
+
+	<!-- 宣告版本 -->
+	<tlib-version>1.0</tlib-version>
+	<!-- 精簡名稱 -->
+	<short-name>DateTag</short-name>
+	<!-- 提供 JSP 引用的 URI -->
+	<uri>http://www.sample.com.tw/functions</uri>
+	
+	<function>
+		<description>民國年轉換</description>
+		<name>showdate</name>
+		<function-class>com.sample.AppUtility</function-class>
+		<function-signature>java.lang.String chineseDate()</function-signature>
+	</function>
+	
+</taglib>
