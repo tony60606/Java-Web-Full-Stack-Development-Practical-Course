@@ -1,0 +1,68 @@
+package com.sample.DAO;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
+import com.sample.model.Product;
+import com.sample.util.DButil;
+
+import openejb.shade.org.apache.regexp.recompile;
+
+public class ProductDAO {
+	
+	//查詢所有商品
+	public List<Product> findAllActive() {
+		
+		String sql = "SELECT product_id,sku,name,description,price,stock,is_active FROM products WHERE is_active = 1 ORDER BY product_id" ;
+		
+		List<Product> list = new ArrayList() ; 
+		
+		try(Connection conn = DButil.getConnection() ;
+			PreparedStatement pstmt = conn.prepareStatement(sql) ;
+			ResultSet rs = pstmt.executeQuery()) {
+			
+			while(rs.next()) {
+				Product p = new Product() ;
+				p.setProductID(rs.getLong("product_id"));
+				p.setSku(rs.getString("sku"));
+				p.setName(rs.getString("name"));
+				p.setDescription(rs.getString("description"));
+				p.setPrice(rs.getBigDecimal("price"));
+				p.setStock(rs.getInt("stock"));
+				p.setActive(rs.getInt("is_active") == 1);
+				list.add(p) ;
+			}
+			
+			return list ;
+			
+		} catch (SQLException ex) {
+			// TODO Auto-generated catch block
+			throw new RuntimeException("資料查詢異常") ;
+		}
+	}
+	
+	public Product findBySku(String sku) {
+		String sql = "SELECT sku , name ,price FROM products WHERE sku = ? LIMIT = 1" ;
+		try(Connection conn = DButil.getConnection() ;
+			PreparedStatement pstmt = conn.prepareStatement(sql)) {
+			pstmt.setString(1, sku);
+			try(ResultSet rs = pstmt.executeQuery()) {
+				if(!rs.next()) {
+					return null ;
+				}
+				Product p = new Product() ;
+				p.setSku(rs.getString("sku"));
+				p.setName(rs.getString("name"));
+				p.setPrice(rs.getBigDecimal("price"));
+				return p ;
+			}
+		} catch (SQLException ex) {
+			throw new RuntimeException(ex) ;
+		}
+	}
+	
+}
