@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<title>所有產品資料清單</title>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+
+<style>
+    body {
+        font-family: Arial, "Microsoft JhengHei", sans-serif;
+        padding: 20px;
+    }
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 15px;
+    }
+    th, td {
+        border: 1px solid #ccc;
+        padding: 8px 12px;
+        text-align: left;
+    }
+    th {
+        background-color: #f2f2f2;
+    }
+    tr:nth-child(even) {
+        background-color: #fafafa;
+    }
+    .badge-active {
+        color: green;
+        font-weight: bold;
+    }
+    .badge-inactive {
+        color: red;
+        font-weight: bold;
+    }
+    .loading {
+        color: #666;
+        margin-top: 10px;
+    }
+</style>
+
+<script>
+// 當網頁 DOM 結構完全載入解析完成後執行，確保操作的 HTML 元素皆已存在
+$(document).ready(function () {
+    
+    // 監聽查詢按鈕的點擊事件，使用者按下按鈕時呼叫 loadProducts 函式重新獲取資料
+    $('#btnFetchAll').click(function () {
+        loadProducts();
+    });
+
+    // 核心資料讀取函式：負責透過 AJAX 向後端 API 發送非同步請求並渲染畫面
+    function loadProducts() {
+        // 後端 RESTful API 端點位址
+        const url = "http://localhost:8080/myweb05/v1/products/all/rawdata";
+
+        // 發送 jQuery AJAX 請求
+        $.ajax({
+            url: url,             // 請求的目標 API 網址
+            type: 'GET',          // HTTP 方法：使用 GET 取得資源
+            dataType: 'json',     // 預期後端回傳的資料格式為 JSON，jQuery 會自動解析為 JavaScript 物件/陣列
+
+            // 請求送出前的生命週期鉤子：通常用於處理畫面載入狀態（Loading State）與防連點
+            beforeSend: function () {
+                // 將按鈕文字改為「查詢中...」並設為 disabled，防止使用者重複快速點擊
+                $('#btnFetchAll').text("查詢中...").prop("disabled", true);
+                // 顯示載入中的提示訊息
+                $('#statusMsg').text("資料讀取中，請稍候...").show();
+                // 隱藏產品資料表格，避免在資料載入時呈現舊內容
+                $('#productTable').hide();
+                // 清空表格內容（<tbody> 內的 <tr> 節點），準備填入新資料
+                $('#tableBody').empty();
+            },
+
+            // 請求成功時執行的回呼函式（HTTP 狀態碼為 200~299）
+            success: function (data) {
+                // 驗證回傳資料：如果回傳為 null/undefined 或是長度為 0 的空陣列
+                if (!data || data.length === 0) {
+                    $('#statusMsg').text("目前沒有任何產品資料。");
+                    return; // 結束執行，不繼續渲染表格
+                }
+
+                // 暫存組裝表格列（<tr>）的 HTML 字串
+                let rowsHtml = "";
+
+                // 使用 forEach 迭代後端回傳的每一筆產品物件（p 即為 Product 物件）
+                data.forEach(function (p) {
+                    // 使用 ES6 模板字串（Template Literals）動態拼接 <tr> 與 <td>
+                    rowsHtml += `
+                        <tr>
+                            <!-- 產品主鍵 ID：使用空值合併運算子 (??) 防止 null/undefined 顯示在畫面上 -->
+                            <td>${p.productID ?? ''}</td>
+
+                            <!-- 產品貨號 SKU -->
+                            <td>${p.sku ?? ''}</td>
+
+                            <!-- 產品名稱 -->
+                            <td>${p.name ?? ''}</td>
+
+                            <!-- 產品描述 -->
+                            <td>${p.description ?? ''}</td>
+
+                            <!-- 產品價格：靠右對齊，並透過 toLocaleString() 轉換為包含千分位逗號的貨幣格式 -->
+                            <td style="text-align:right;">$${p.price !== undefined ? Number(p.price).toLocaleString() : '0'}</td>
+
+                            <!-- 產品庫存量：靠右對齊，若無數值則預設為 0 -->
+                            <td style="text-align:right;">${p.stock ?? 0}</td>
+
+                            <!-- 上架狀態：居中對齊，根據 active 的布林值切換 class 與顯示文字 -->
+                            <td style="text-align:center;">
+                                <span class="${p.active ? 'badge-active' : 'badge-inactive'}">
+                                    ${p.active ? '上架中' : '未上架'}
+                                </span>
+                            </td>
+                        </tr>
+                    `;
+                });
+
+                // 將組合好的所有 <tr> HTML 一次性寫入 <tbody>，減少多次 DOM 操作的效能損耗
+                $('#tableBody').html(rowsHtml);
+                // 顯示已填入資料的表格
+                $('#productTable').show();
+                // 隱藏載入中提示文字
+                $('#statusMsg').hide();
+            },
+
+            // 請求失敗時執行的回呼函式（HTTP 狀態碼為 4xx、5xx 或網路錯誤）
+            error: function (xhr) {
+                // 於畫面顯示 HTTP 狀態碼（例如：404、500）
+                $('#statusMsg').text("查詢失敗，錯誤代碼：" + xhr.status).show();
+
+                // 檢查後端是否有回傳自訂的 Message JSON 物件，若有則跳出警告視窗通知使用者
+                if (xhr.responseJSON && xhr.responseJSON.message) {
+                    alert(xhr.responseJSON.message);
+                }
+            },
+
+            // 無論請求成功或失敗，最後必定會執行的回呼函式（相當於 try...finally）
+            complete: function () {
+                // 將按鈕文字還原為初始狀態，並重新啟用按鈕允許後續點擊
+                $('#btnFetchAll').text("重新整理 / 查詢全部產品").prop("disabled", false);
+            }
+        });
+    }
+
+    // 頁面首次載入完畢後，立即自動執行一次查詢以載入預設產品清單
+    loadProducts();
+});
+</script>
+</head>
+<body>
+
+    <fieldset>
+        <legend>產品管理 - 全部清單</legend>
+        <button id="btnFetchAll">重新整理 / 查詢全部產品</button>
+        <div id="statusMsg" class="loading"></div>
+    </fieldset>
+
+    <table id="productTable" style="display: none;">
+        <thead>
+            <tr>
+                <th style="width: 80px;">ID</th>
+                <th style="width: 120px;">貨號 (SKU)</th>
+                <th style="width: 200px;">產品名稱</th>
+                <th>說明</th>
+                <th style="width: 100px; text-align:right;">售價</th>
+                <th style="width: 80px; text-align:right;">庫存</th>
+                <th style="width: 100px; text-align:center;">狀態</th>
+            </tr>
+        </thead>
+        <tbody id="tableBody"></tbody>
+    </table>
+
+</body>
+</html>
