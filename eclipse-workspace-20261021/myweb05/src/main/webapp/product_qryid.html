@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>產品資料查詢</title>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+
+<script>
+// 當網頁 DOM 樹結構完全載入後執行，確保綁定事件與操作的元素都已存在於頁面上
+$(document).ready(function () {
+
+    // 初始進入頁面時，先將顯示查詢結果的區塊隱藏起來
+    $('#result').hide();
+
+    // 監聽「查詢」按鈕（#btnQuery）的點擊事件
+    $('#btnQuery').click(function () {
+
+        // 讀取輸入框（#productid）的值，並使用 .trim() 移除前後的多餘空白
+        const key = $('#productid').val().trim();
+
+        // 前端防呆驗證：若未輸入任何字元（空字串），彈出提示並中斷執行
+        if (!key) {
+            alert("請輸入產品編號");
+            return;
+        }
+
+        // 使用 ES6 樣板字面值（Template Literals）動態組裝後端 RESTful API 網址
+        const url = `http://localhost:8080/myweb05/v1/products/productsqry/id/${key}/rawdata`;
+
+        // 在發送新請求前，清空舊的表格列資料，避免殘留上次查詢的內容
+        $('#dataTable').empty();
+        // 先隱藏結果區塊，等收到新資料再顯示
+        $('#result').hide();
+
+        // 發送 jQuery 非同步 HTTP 請求（AJAX）
+        $.ajax({
+            url: url,       // 請求目標 URL
+            type: 'GET',    // HTTP 請求方法為 GET
+
+            // 請求送出前的生命週期鉤子：通常用於處理載入中狀態及防連點機制
+            beforeSend: function () {
+                // 將按鈕文字修改為「查詢中...」，並設定 disabled 停用按鈕，防止使用者重複送出
+                $('#btnQuery').text("查詢中...").prop("disabled", true);
+            },
+
+            // 請求成功時（HTTP 200 系列）觸發的回呼函式，result 為後端回傳的單筆產品 JSON 物件
+            success: function (result) {
+
+                // 定義暫存表格 HTML 的字串
+                let html = "";
+
+                // 使用 for...in 迴圈遍歷該物件的所有屬性鍵（Key-Value 鍵值對）
+                for (const key in result) {
+                    // 動態組裝 <tr> 列：左欄為屬性名稱（如 productId, sku, price 等），右欄為對應的值
+                    html += `
+                        <tr>
+                            <td style="font-weight:bold; width:150px;">${key}</td>
+                            <td>${result[key]}</td>
+                        </tr>
+                    `;
+                }
+
+                // 將組裝好的 HTML 寫入表格主體（#dataTable）
+                $('#dataTable').html(html);
+                // 將結果區塊顯示出來
+                $('#result').show();
+            },
+
+            // 請求失敗時（HTTP 4xx、5xx 或連線異常）觸發的回呼函式
+            error: function (xhr) {
+                // 使用可選串連運算子（Optional Chaining `?.`）檢查後端是否回傳帶有 message 的 JSON 錯誤訊息
+                if (xhr.responseJSON?.message) {
+                    alert(xhr.responseJSON.message); // 跳出後端自訂錯誤提示（如「沒有此產品編號!」）
+                } else {
+                    alert("系統錯誤：" + xhr.status); // 否則跳出 HTTP 狀態碼（例如 404、500）
+                }
+            },
+
+            // 不論請求成功或失敗，最後一定會執行的生命週期函式（類似 try...finally）
+            complete: function () {
+                // 將按鈕文字還原為「查詢」，並解除停用狀態以允許下一次查詢
+                $('#btnQuery').text("查詢").prop("disabled", false);
+            }
+        });
+    });
+});
+</script>
+
+</head>
+<body>
+
+	<fieldset>
+		<legend>產品資料查詢</legend>
+		<div>產品編號</div>
+		<input type="text" id="productid" />
+		<button id="btnQuery">查詢</button>
+	</fieldset>
+
+	<fieldset id="result">
+		<legend>查詢結果</legend>
+
+		<table border="1" width="100%" style="border-collapse: collapse;">
+			<tbody id="dataTable"></tbody>
+		</table>
+
+	</fieldset>
+
+</body>
+</html>

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="https://jakarta.ee/xml/ns/jakartaee" xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_6_0.xsd" version="6.0">
+  <display-name>myweb02</display-name>
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+    <welcome-file>index.htm</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>index.xhtml</welcome-file>
+    <welcome-file>default.html</welcome-file>
+    <welcome-file>default.htm</welcome-file>
+    <welcome-file>default.jsp</welcome-file>
+    <welcome-file>default.xhtml</welcome-file>
+  </welcome-file-list>
+  
+  <!-- 佈署Servlet -->
+  <servlet>
+  	<servlet-name>webHello</servlet-name>
+  	<servlet-class>com.sample.WebHelloServlet</servlet-class>
+  </servlet>
+  <!-- 描述對外的端點 -->
+  <servlet-mapping>
+  	<servlet-name>webHello</servlet-name>
+  	<url-pattern>/WebHello.view</url-pattern>
+  </servlet-mapping>
+  <!-- 建立不同的url-pattern -->
+    <servlet-mapping>
+  	<servlet-name>webHello</servlet-name>
+  	<url-pattern>/WebHelloServlet.view</url-pattern>
+  </servlet-mapping>
+  
+  <!-- 部屬具有初始化參數的Servlet -->
+   <servlet>
+  	<servlet-name>ItemServlet</servlet-name>
+  	<servlet-class>com.sample.ItemServlet</servlet-class>
+  	<!-- 設定初始化參數 -->
+  	<init-param>
+  		<!-- 參數名稱 -->
+  		<param-name>items</param-name>
+  		<!-- 參數值 -->
+  		<param-value>Java,C++,Python,ASP net,SQL,Linux</param-value>
+  	</init-param>
+  	</servlet>
+	<servlet-mapping>
+	 	<servlet-name>ItemServlet</servlet-name>
+	  	<url-pattern>/ItemServlet</url-pattern>
+	</servlet-mapping>
+	
+	<!-- 網站初始化參數 -->
+  	<context-param>
+  		<param-name>driverClassName</param-name>
+  		<param-value>com.mysql.cj.jdbc.Driver</param-value>
+  	</context-param>
+  	<context-param>
+  		<param-name>url</param-name>
+  		<param-value>jdbc.mysql://localhost:3306/employee</param-value>
+  	</context-param>
+  	<context-param>
+  		<param-name>username</param-name>
+  		<param-value>root</param-value>
+  	</context-param>
+  	<context-param>
+  		<param-name>password</param-name>
+  		<param-value>12345678</param-value>
+  	</context-param>
+</web-app>
